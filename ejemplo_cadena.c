@@ -12,14 +12,16 @@ int* ocurrencias(char_string*);
 
 int main(void)
 {
-   char_string cs1;
-   cs1.c = 'a';
-   cs1.cadena = "hola mundo que tal!";
+   char_string *cs1;
+   cs1 = (char_string*) malloc(sizeof(char_string) * 1);
+
+   cs1->c = 'a';
+   cs1->cadena = "hola mundo que tal!";
    
-   int canti = cantidad(&cs1);
+   int canti = cantidad(cs1);
    printf("%d\n", canti);
 
-   int* arr = ocurrencias(&cs1);
+   int* arr = ocurrencias(cs1);
    if (arr == NULL) {
       printf("No se pudo reservar memoria");
       return -1;
@@ -28,6 +30,9 @@ int main(void)
    for (int i = 0; i < canti; i++) {
      printf("%d\n", *(arr + i)); 
    }
+
+   free(arr);
+   free(cs1);
 
    return 0;
 }
