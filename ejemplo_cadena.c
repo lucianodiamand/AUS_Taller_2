@@ -16,7 +16,11 @@ int main(void)
    cs1 = (char_string*) malloc(sizeof(char_string) * 1);
 
    cs1->c = 'a';
-   cs1->cadena = "hola mundo que tal!";
+   printf("Ingrese la frase\n");
+   char *frase = (char*) malloc(sizeof(char) * 100);
+   fgets(frase, 100, stdin);
+
+   cs1->cadena = frase;
    
    int canti = cantidad(cs1);
    printf("%d\n", canti);
@@ -32,6 +36,7 @@ int main(void)
    }
 
    free(arr);
+   free(frase);
    free(cs1);
 
    return 0;
