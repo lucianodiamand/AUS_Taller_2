@@ -12,6 +12,12 @@ int* ocurrencias(char_string*);
 
 int main(void)
 {
+   // ------- Una forma usando objetos del tipo de la estructura ------
+   char_string cs2;
+   cs2.c = 'o';
+   cs2.cadena = "Hola mundo";
+
+   // ------- Una forma usando punteros a estructura ------
    char_string *cs1;
    cs1 = (char_string*) malloc(sizeof(char_string) * 1);
 
@@ -21,9 +27,10 @@ int main(void)
    fgets(frase, 100, stdin);
 
    cs1->cadena = frase;
+   // -----------------------------------------------------
    
    int canti = cantidad(cs1);
-   printf("%d\n", canti);
+   printf("Cantidad de ocurrencias de %c: %d\n", cs1->c, canti);
 
    int* arr = ocurrencias(cs1);
    if (arr == NULL) {
@@ -60,6 +67,8 @@ int cantidad(char_string* cs) {
 int* ocurrencias(char_string* cs) {
   int cant = cantidad(cs);
   int* arr = (int*) malloc(sizeof(int) * cant);
+  //int arr[cant]; // <--- NO no no!
+
   if (arr == NULL) {
      return NULL; 
   }
