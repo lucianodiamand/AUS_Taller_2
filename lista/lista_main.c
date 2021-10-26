@@ -1,14 +1,17 @@
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "lista.h"
 
 /* Helper */
 void crear(ciclista** c, int num, int tiempo, char* nombre);
+void limpiar(ciclista** c);
 
 int main (void) 
 {
    ciclista* cima = NULL;
+
    ciclista* c1 = NULL;
    crear(&c1, 1, 100, "Luciano");
 
@@ -26,6 +29,13 @@ int main (void)
 
    listar(cima);
 
+   limpiar(&cima);
+
+   if (cima) {
+      printf("Lista con elementos\n");
+   } else {
+      printf("Lista VACIA\n");
+   }
    return EXIT_SUCCESS;
 }
 
@@ -35,5 +45,15 @@ void crear(ciclista** c, int num, int tiempo, char* nombre) {
    (*c)->tiempo = tiempo;
    (*c)->sig = NULL;
    strcpy((*c)->nombre, nombre);
+}
+
+void limpiar(ciclista** c) {
+   ciclista* p = *c;
+   while(p) {
+     ciclista* tmp = p;     
+     p = p->sig;
+     free(tmp);
+   }
+   *c = NULL;
 }
 

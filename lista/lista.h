@@ -6,7 +6,7 @@ typedef struct _ciclista {
    struct _ciclista* sig;  //enlace a la propia estructura
 } ciclista;
 
-/* Lista enlazada no ordenada */
+/* Lista enlazada */
 void agregar(ciclista** top, ciclista* nuevo);
 void listar(ciclista* top);
 

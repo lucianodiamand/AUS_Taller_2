@@ -7,6 +7,5 @@ void listar(ciclista* cima) {
       printf("%d: %s\t\t%d\n", cima->num, cima->nombre, cima->tiempo);
       cima = cima->sig;
    }
-
 }
 
